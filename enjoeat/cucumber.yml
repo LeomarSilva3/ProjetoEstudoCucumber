@@ -1,7 +1,14 @@
- 
-default:  -p html -p dot
-
-#config Test Report
-bdd: --format pretty
+---
+default: -p dev -p json -p chrome
+html: --format html --out=log/features.html
 dot: --format progress
-html: --format html --out=log/report.html
+bdd: --format pretty
+json: --format json -o --out=log/"report.json"
+dev: ENV_TYPE=dev
+firefox: BROWSER=firefox
+chrome: BROWSER=chrome
+headless: BROWSER=headless
+ci: -p dev -p headless -p json -p pretty
+progress: --format progress
+pretty: --format pretty
+
